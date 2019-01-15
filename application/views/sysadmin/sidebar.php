@@ -31,6 +31,19 @@
                 <li class="<?= @$warga ?>"><a href="<?= site_url('sysadmin/warga') ?>"><span class="fa fa-users"></span> Data Warga</a></li>
             </ul>
         </li>
+        <li class="xn-openable <?= @$kegiatan ?>">
+            <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">KEGIATAN</span></a>
+            <ul>
+                <li class="<?= @$tkegiatan ?>"><a href="<?= site_url('sysadmin/kegiatan/tambah') ?>"><span class="fa fa-plus"></span> Tambah Kegiatan</a></li>
+                <li class="<?= @$dkegiatan ?>"><a href="<?= site_url('sysadmin/kegiatan') ?>"><span class="fa fa-table"></span> Data Kegiatan</a></li>
+            </ul>
+        </li>
+        <li class="xn-openable <?= @$penarikan_dana ?>">
+            <a href="#"><span class="fa fa-money"></span> <span class="xn-text">PENARIKAN DANA</span></a>
+            <ul>
+                <li class="<?= @$dpenarikan_dana ?>"><a href="<?= site_url('sysadmin/penarikan-dana') ?>"><span class="fa fa-table"></span> Data Penarikan Dana</a></li>
+            </ul>
+        </li>
     </ul>
     <!-- END X-NAVIGATION -->
 </div>
