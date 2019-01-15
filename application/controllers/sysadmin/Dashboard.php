@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller {
 		$data['title']		= "Dashboard - Bubak Smart Dusun";
 		$data['subtitle']	= "Dashboard";
 		$data['dashboard']	= "active";
+		$data['content']	= "dashboard";
 
 		$this->load->view('sysadmin/index', $data);
 	}
