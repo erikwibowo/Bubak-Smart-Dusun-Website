@@ -16,6 +16,7 @@ class Api extends CI_Controller {
 		foreach ($data as $key) {
 			$arra['id_rt']	= $key->id_rt;
 			$arra['rt']		= $key->rt;
+			$arra['ketua_rt']		= $key->ketua_rt;
 			array_push($arr, $arra);
 		}
 
@@ -29,7 +30,7 @@ class Api extends CI_Controller {
 
 		foreach ($data as $key) {
 			$arra['nama_lengkap_warga']	= $key->nama_lengkap_warga;
-			$arra['rt']			= $key->rt;
+			$arra['rt']					= $key->rt;
 			array_push($arr, $arra);
 		}
 
@@ -42,12 +43,19 @@ class Api extends CI_Controller {
 		$arra = array();
 
 		foreach ($data as $key) {
+			$total = $key->jml_rt1+$key->jml_rt2+$key->jml_rt3+$key->jml_rt4;
+
 			$arra['nama_kegiatan']	= $key->nama_kegiatan;
+			$arra['anggaran']		= rp($key->anggaran);
+			$arra['iuran']			= rp($key->iuran);
+			$arra['mulai']			= date_indo(date("Y-m-d", strtotime($key->mulai)));
+			$arra['selesai']		= date_indo(date("Y-m-d", strtotime($key->selesai)));
 			$arra['rt1']			= rp($key->jml_rt1);
 			$arra['rt2']			= rp($key->jml_rt2);
 			$arra['rt3']			= rp($key->jml_rt3);
 			$arra['rt4']			= rp($key->jml_rt4);
-			$arra['total']			= rp($key->jml_rt1+$key->jml_rt2+$key->jml_rt3+$key->jml_rt4);
+			$arra['total']			= rp($total);
+			$arra['persen']			= round($total/$key->anggaran*100, 2)."%";
 			array_push($arr, $arra);
 		}
 
