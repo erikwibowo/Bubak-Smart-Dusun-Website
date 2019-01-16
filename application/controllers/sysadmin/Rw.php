@@ -6,6 +6,12 @@ class Rw extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Mrw');
+
+		if ($this->session->userdata('login') != "berhasil") {
+			$this->session->set_flashdata('notif', 'Silahkan login terlebih dahulu');
+			$this->session->set_flashdata('type', 'error');
+			redirect('syslogin','refresh');
+		}
 	}
 
 	public function index(){

@@ -55,19 +55,19 @@ class Syslogin extends CI_Controller {
 						// 	redirect('akuntansi','refresh');
 						// }
 					}else{
-						$this->session->set_flashdata('notif', 'Nama Pengguna & Kata sandi tidak cocok. Silahkan coba lagi.');
+						$this->session->set_flashdata('notif', 'Nomor Hp & Kata sandi tidak cocok. Silahkan coba lagi.');
 						$this->session->set_flashdata('type', 'error');
-						redirect('','refresh');
+						redirect('syslogin','refresh');
 					}
 				}else{
 					$this->session->set_flashdata('notif', 'Akun anda telah dinonaktifkan. Silahkan hubungi administrator');
 					$this->session->set_flashdata('type', 'error');
-					redirect('','refresh');
+					redirect('syslogin','refresh');
 				}
 			}else{
-				$this->session->set_flashdata('notif', 'Nama Pengguna & Kata sandi tidak cocok. Silahkan coba lagi.');
+				$this->session->set_flashdata('notif', 'Nomor Hp & Kata sandi tidak cocok. Silahkan coba lagi.');
 				$this->session->set_flashdata('type', 'error');
-				redirect('','refresh');
+				redirect('syslogin','refresh');
 			}
 		}
 	}
@@ -77,10 +77,10 @@ class Syslogin extends CI_Controller {
 			'id_admin',
 			'nama_admin',
 			'rt',
-			'level'
+			'login'
 		);
 		$this->session->unset_userdata($data_session);
-		redirect('','refresh');
+		redirect('syslogin','refresh');
 	}
 
 }

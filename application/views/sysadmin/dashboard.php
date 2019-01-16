@@ -20,22 +20,27 @@
     <div class="col-md-3">
         
         <!-- START WIDGET SLIDER -->
-        <div class="widget widget-success widget-carousel">
+        <div class="widget widget-info widget-carousel">
             <div class="owl-carousel" id="owl-example">
                 <div>                                    
-                    <div class="widget-title">Program</div>                                                                        
-                    <div class="widget-subtitle">Data Semua Program</div>
-                    <div class="widget-int">4124</div>
+                    <div class="widget-title">WARGA RT 1</div>                                                                        
+                    <div class="widget-subtitle">Data Rumah Warga RT 1</div>
+                    <div class="widget-int"><?= $rt1 ?></div>
                 </div>
                 <div>                                    
-                    <div class="widget-title">Kegiatan</div>
-                    <div class="widget-subtitle">Data Semua Kegiatan</div>
-                    <div class="widget-int">124124</div>
+                    <div class="widget-title">WARGA RT 2</div>                                                                        
+                    <div class="widget-subtitle">Data Rumah Warga RT 2</div>
+                    <div class="widget-int"><?= $rt2 ?></div>
                 </div>
                 <div>                                    
-                    <div class="widget-title">Sub Kegiatan</div>
-                    <div class="widget-subtitle">Data Semua Sub Kegiatan</div>
-                    <div class="widget-int">12412</div>
+                    <div class="widget-title">WARGA RT 3</div>                                                                        
+                    <div class="widget-subtitle">Data Rumah Warga RT 3</div>
+                    <div class="widget-int"><?= $rt3 ?></div>
+                </div>
+                <div>                                    
+                    <div class="widget-title">WARGA RT 4</div>                                                                        
+                    <div class="widget-subtitle">Data Rumah Warga RT 4</div>
+                    <div class="widget-int"><?= $rt4 ?></div>
                 </div>
             </div>                            
             <div class="widget-controls">                                
@@ -48,14 +53,14 @@
     <div class="col-md-3">
         
         <!-- START WIDGET MESSAGES -->
-        <div class="widget widget-warning widget-item-icon" onclick="location.href='pages-messages.html';">
+        <div class="widget widget-warning widget-item-icon" onclick="location.href='<?= site_url('sysadmin/kegiatan') ?>';">
             <div class="widget-item-left">
-                <span class="fa fa-inbox"></span>
+                <span class="fa fa-cogs"></span>
             </div>                             
             <div class="widget-data">
-                <div class="widget-int num-count">48</div>
-                <div class="widget-title">Paket Pekerjaan</div>
-                <div class="widget-subtitle">Swakelola & Penyedia</div>
+                <div class="widget-int num-count"><?= $kegiatan ?></div>
+                <div class="widget-title">Kegiatan</div>
+                <div class="widget-subtitle">Semua kegiatan di dusun</div>
             </div>      
             <div class="widget-controls">                                
                 <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>

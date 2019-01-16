@@ -8,6 +8,12 @@ class Penarikan_dana extends CI_Controller {
 		$this->load->model('MpenarikanDana');
 		$this->load->model('Mwarga');
 		$this->load->model('Mrt');
+
+		if ($this->session->userdata('login') != "berhasil") {
+			$this->session->set_flashdata('notif', 'Silahkan login terlebih dahulu');
+			$this->session->set_flashdata('type', 'error');
+			redirect('syslogin','refresh');
+		}
 	}
 
 	public function index(){
