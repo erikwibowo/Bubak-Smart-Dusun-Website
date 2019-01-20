@@ -80,6 +80,57 @@ class Penarikan_dana extends CI_Controller {
 		redirect('sysadmin/penarikan-dana','refresh');
 	}
 
+	public function rinci(){
+		$id = $this->input->get('id_kegiatan');
+		$data['title']		= "Penarikan Dana - Bubak Smart Dusun";
+		$data['subtitle']	= "Data Penarikan Dana";
+		$data['b1']			= "Penarikan Dana";
+		$data['b1a']		= "#";
+		$data['b2']			= "Data Penarikan Dana";
+		$data['b2a']		= base_url('sysadmin/penarikan-dana');
+		$data['b3']			= "Rincian Penarikan Dana";
+		$data['b3a']		= "#";
+		$data['jumlah']		= 3;
+		$data['penarikan_dana']	= "active";
+		$data['dpenarikan_dana']	= "active";
+		$data['content']	= "data-rinci-penarikan-dana";
+		$data['data']		= $this->MpenarikanDana->readByRt($id)->result();
+
+		$this->load->view('sysadmin/index', $data);
+	}
+
+	public function rinci_warga(){
+		$id_kegiatan = $this->input->get('id_kegiatan');
+		$id_rt = $this->input->get('id_rt');
+
+		$data['title']		= "Penarikan Dana - Bubak Smart Dusun";
+		$data['subtitle']	= "Data Penarikan Dana";
+		$data['b1']			= "Penarikan Dana";
+		$data['b1a']		= "#";
+		$data['b2']			= "Data Penarikan Dana Per RT";
+		$data['b2a']		= base_url('sysadmin/penarikan-dana');
+		$data['b3']			= "Rincian Penarikan Dana";
+		$data['b3a']		= base_url('sysadmin/penarikan-dana/rinci?id_kegiatan='.$id_kegiatan);
+		$data['b4']			= "Rincian Penarikan Dana Per Warga";
+		$data['b4a']		= "#";
+		$data['jumlah']		= 4;
+		$data['penarikan_dana']	= "active";
+		$data['dpenarikan_dana']	= "active";
+		$data['content']	= "data-rinci-penarikan-dana-warga";
+		$data['data']		= $this->MpenarikanDana->readByWarga($id_kegiatan, $id_rt)->result();
+
+		$this->load->view('sysadmin/index', $data);
+	}
+
+	public function delete(){
+		$id_kegiatan = $this->input->get('id_kegiatan');
+		$this->MpenarikanDana->delete($id_kegiatan);
+		$this->session->set_flashdata('notif', 'Data penarikan dana berhasil dihapus');
+		$this->session->set_flashdata('type', 'success');
+		redirect('sysadmin/penarikan-dana/rinci?id_kegiatan='.$id_kegiatan,'refresh');
+	}
+
+
 }
 
 /* End of file Penarikan_dana.php */

@@ -30,6 +30,27 @@ class Rt extends CI_Controller {
 		$this->load->view('sysadmin/index', $data);
 	}
 
+	public function insert(){
+		$this->Mrt->insert($this->input->post());
+		$this->session->set_flashdata('notif', 'Data RT berhasil ditambahkan');
+		$this->session->set_flashdata('type', 'success');
+		redirect('sysadmin/rt','refresh');
+	}
+
+	public function update(){
+		$this->Mrt->update($this->input->post(), $this->input->post('id_rt'));
+		$this->session->set_flashdata('notif', 'Data RT berhasil disimpan');
+		$this->session->set_flashdata('type', 'success');
+		redirect('sysadmin/rt','refresh');
+	}
+
+	public function delete($id){
+		$this->Mrt->delete($id);
+		$this->session->set_flashdata('notif', 'Data RT berhasil dihapus');
+		$this->session->set_flashdata('type', 'success');
+		redirect('sysadmin/rt','refresh');
+	}
+
 }
 
 /* End of file Rt.php */

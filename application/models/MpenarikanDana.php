@@ -11,6 +11,25 @@ class MpenarikanDana extends CI_Model {
 		return $this->db->get('tb_penarikan_dana a');
 	}
 
+	public function readByRt($id_kegiatan){
+		$this->db->select('*, (select sum(a.jumlah) from tb_penarikan_dana group by c.id_rt) as dana');
+		$this->db->join('tb_kegiatan b', 'a.id_kegiatan = b.id_kegiatan');
+		$this->db->join('tb_warga c', 'c.id_warga = a.id_warga');
+		$this->db->where('a.id_kegiatan', $id_kegiatan);
+		$this->db->group_by('c.id_rt');
+		return $this->db->get('tb_penarikan_dana a');
+	}
+
+	public function readByWarga($id_kegiatan, $id_rt){
+		$this->db->select('*, (select sum(a.jumlah) from tb_penarikan_dana group by c.id_rt) as dana');
+		$this->db->join('tb_kegiatan b', 'a.id_kegiatan = b.id_kegiatan');
+		$this->db->join('tb_warga c', 'c.id_warga = a.id_warga');
+		$this->db->where('a.id_kegiatan', $id_kegiatan);
+		$this->db->where('c.id_rt', $id_rt);
+		$this->db->group_by('c.id_warga');
+		return $this->db->get('tb_penarikan_dana a');
+	}
+
 	public function insert($data){
 		return $this->db->insert('tb_penarikan_dana', $data);
 	}
@@ -18,6 +37,11 @@ class MpenarikanDana extends CI_Model {
 	public function update($data, $id_warga){
 		$this->db->where('id_warga', $id_warga);
 		return $this->db->update('tb_penarikan_dana', $data);
+	}
+
+	public function delete($id_kegiatan){
+		$this->db->where('id_kegiatan', $id_kegiatan);
+		return $this->db->delete('tb_penarikan_dana');
 	}
 
 }

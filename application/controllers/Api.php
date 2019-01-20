@@ -37,8 +37,26 @@ class Api extends CI_Controller {
 		echo json_encode($arr);
 	}
 
-	public function penarikan_dana(){
-		$data = $this->Mapi->getDanaPengajian()->result();
+	public function kegiatan(){
+		$data = $this->Mapi->kegiatan()->result();
+		$arr = array();
+		$arra = array();
+
+		foreach ($data as $key) {
+			$arra['id_kegiatan']	= $key->id_kegiatan;
+			$arra['nama_kegiatan']	= $key->nama_kegiatan;
+			$arra['anggaran']		= rp($key->anggaran);
+			$arra['iuran']			= rp($key->iuran);
+			$arra['mulai']			= date_indo(date("Y-m-d", strtotime($key->mulai)));
+			$arra['selesai']		= date_indo(date("Y-m-d", strtotime($key->selesai)));
+			array_push($arr, $arra);
+		}
+
+		echo json_encode($arr);
+	}
+
+	public function penarikan_dana($id_kegiatan){
+		$data = $this->Mapi->getDanaKegiatan($id_kegiatan)->result();
 		$arr = array();
 		$arra = array();
 

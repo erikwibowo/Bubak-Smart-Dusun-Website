@@ -1,6 +1,8 @@
 <?php
 	if ($content == "dashboard"){
 		$this->load->view('sysadmin/dashboard');
+	}elseif ($content == "data-admin"){
+		$this->load->view('sysadmin/tabel');
 	}elseif ($content == "data-rt"){
 		$this->load->view('sysadmin/tabel');
 	}elseif ($content == "data-rw"){
@@ -12,6 +14,10 @@
 	}elseif ($content == "data-penarikan-dana"){
 		$this->load->view('sysadmin/tabel');
 	}elseif ($content == "input-penarikan-dana"){
+		$this->load->view('sysadmin/tabel');
+	}elseif ($content == "data-rinci-penarikan-dana"){
+		$this->load->view('sysadmin/tabel');
+	}elseif ($content == "data-rinci-penarikan-dana-warga"){
 		$this->load->view('sysadmin/tabel');
 	}
 ?>

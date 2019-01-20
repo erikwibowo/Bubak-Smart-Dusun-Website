@@ -28,6 +28,16 @@ class Mwarga extends CI_Model {
 		return $this->db->insert('tb_warga', $data);
 	}
 
+	public function update($data, $id){
+		$this->db->where('id_warga', $id);
+		return $this->db->update('tb_warga', $data);
+	}
+
+	public function delete($id){
+		$this->db->where('id_warga', $id);
+		return $this->db->delete('tb_warga');
+	}
+
 }
 
 /* End of file Mwarga.php */

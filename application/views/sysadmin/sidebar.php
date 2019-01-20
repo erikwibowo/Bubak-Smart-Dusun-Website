@@ -26,6 +26,7 @@
         <li class="xn-openable <?= @$master ?>">
             <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">MASTER DATA</span></a>
             <ul>
+                <li class="<?= @$admin ?>"><a href="<?= site_url('sysadmin/admin') ?>"><span class="fa fa-users"></span> Data Admin</a></li>
                 <li class="<?= @$rt ?>"><a href="<?= site_url('sysadmin/rt') ?>"><span class="fa fa-building-o"></span> Data RT</a></li>
                 <li class="<?= @$rw ?>"><a href="<?= site_url('sysadmin/rw') ?>"><span class="fa fa-building-o"></span> Data RW</a></li>
                 <li class="<?= @$warga ?>"><a href="<?= site_url('sysadmin/warga') ?>"><span class="fa fa-users"></span> Data Warga</a></li>

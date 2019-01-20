@@ -30,6 +30,27 @@ class Kegiatan extends CI_Controller {
 		$this->load->view('sysadmin/index', $data);
 	}
 
+	public function insert(){
+		$this->Mkegiatan->insert($this->input->post());
+		$this->session->set_flashdata('notif', 'Data Kegiatan berhasil ditambahkan');
+		$this->session->set_flashdata('type', 'success');
+		redirect('sysadmin/kegiatan','refresh');
+	}
+
+	public function update(){
+		$this->Mkegiatan->update($this->input->post(), $this->input->post('id_kegiatan'));
+		$this->session->set_flashdata('notif', 'Data Kegiatan berhasil disimpan');
+		$this->session->set_flashdata('type', 'success');
+		redirect('sysadmin/kegiatan','refresh');
+	}
+
+	public function delete($id){
+		$this->Mkegiatan->delete($id);
+		$this->session->set_flashdata('notif', 'Data Kegiatan berhasil dihapus');
+		$this->session->set_flashdata('type', 'success');
+		redirect('sysadmin/kegiatan','refresh');
+	}
+
 }
 
 /* End of file Kegiatan.php */

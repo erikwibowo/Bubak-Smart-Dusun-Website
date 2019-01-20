@@ -7,6 +7,7 @@ class Warga extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model("Mwarga");
+		$this->load->model('Mrt');
 
 		if ($this->session->userdata('login') != "berhasil") {
 			$this->session->set_flashdata('notif', 'Silahkan login terlebih dahulu');
@@ -24,9 +25,10 @@ class Warga extends CI_Controller {
 		$data['b2a']		= "#";
 		$data['jumlah']		= 2;
 		$data['master']		= "active";
-		$data['rt']			= "active";
+		$data['warga']			= "active";
 		$data['content']	= "data-warga";
 		$data['data']		= $this->Mwarga->read()->result();
+		$data['data_rt']	= $this->Mrt->read()->result();
 
 		$this->load->view('sysadmin/index', $data);
 	}
@@ -42,6 +44,28 @@ class Warga extends CI_Controller {
 		// 	);
 		// 	$this->Mwarga->insert($dtwarga);
 		// }
+	}
+
+
+	public function insert(){
+		$this->Mwarga->insert($this->input->post());
+		$this->session->set_flashdata('notif', 'Data Warga berhasil ditambahkan');
+		$this->session->set_flashdata('type', 'success');
+		redirect('sysadmin/warga','refresh');
+	}
+
+	public function update(){
+		$this->Mwarga->update($this->input->post(), $this->input->post('id_warga'));
+		$this->session->set_flashdata('notif', 'Data Warga berhasil disimpan');
+		$this->session->set_flashdata('type', 'success');
+		redirect('sysadmin/warga','refresh');
+	}
+
+	public function delete($id){
+		$this->Mwarga->delete($id);
+		$this->session->set_flashdata('notif', 'Data Warga berhasil dihapus');
+		$this->session->set_flashdata('type', 'success');
+		redirect('sysadmin/warga','refresh');
 	}
 
 }
