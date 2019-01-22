@@ -35,8 +35,13 @@
         <li class="xn-openable <?= @$kegiatan ?>">
             <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">KEGIATAN</span></a>
             <ul>
-                <li class="<?= @$tkegiatan ?>"><a href="<?= site_url('sysadmin/kegiatan/tambah') ?>"><span class="fa fa-plus"></span> Tambah Kegiatan</a></li>
                 <li class="<?= @$dkegiatan ?>"><a href="<?= site_url('sysadmin/kegiatan') ?>"><span class="fa fa-table"></span> Data Kegiatan</a></li>
+            </ul>
+        </li>
+        <li class="xn-openable <?= @$berita ?>">
+            <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">BERITA</span></a>
+            <ul>
+                <li class="<?= @$dberita ?>"><a href="<?= site_url('sysadmin/berita') ?>"><span class="fa fa-file"></span> Data Berita</a></li>
             </ul>
         </li>
         <li class="xn-openable <?= @$penarikan_dana ?>">

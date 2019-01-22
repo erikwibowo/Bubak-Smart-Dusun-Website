@@ -80,6 +80,26 @@ class Api extends CI_Controller {
 		echo json_encode($arr);
 	}
 
+
+
+	public function berita(){
+		$data = $this->Mapi->berita()->result();
+		$arr = array();
+		$arra = array();
+
+		foreach ($data as $key) {
+			$arra['id_berita']		= $key->id_berita;
+			$arra['judul_berita']	= $key->judul_berita;
+			$arra['foto_berita']	= $key->foto_berita;
+			$arra['isi_berita']		= $key->isi_berita;
+			$arra['oleh']			= $key->oleh;
+			$arra['dibuat']			= date_indo(date("Y-m-d", strtotime($key->dibuat)));
+			array_push($arr, $arra);
+		}
+
+		echo json_encode($arr);
+	}
+
 }
 
 /* End of file Api.php */

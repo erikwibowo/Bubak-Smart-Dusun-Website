@@ -9,6 +9,12 @@
 		$this->load->view('sysadmin/tabel');
 	}elseif ($content == "data-warga"){
 		$this->load->view('sysadmin/tabel');
+	}elseif ($content == "data-berita"){
+		$this->load->view('sysadmin/tabel');
+	}elseif ($content == "tambah-data-berita"){
+		$this->load->view('sysadmin/form');
+	}elseif ($content == "edit-data-berita"){
+		$this->load->view('sysadmin/form');
 	}elseif ($content == "data-kegiatan"){
 		$this->load->view('sysadmin/tabel');
 	}elseif ($content == "data-penarikan-dana"){

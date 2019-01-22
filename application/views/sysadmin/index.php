@@ -125,7 +125,8 @@
         <script type='text/javascript' src='<?= base_url() ?>asset/js/plugins/noty/jquery.noty.js'></script>
         <script type='text/javascript' src='<?= base_url() ?>asset/js/plugins/noty/layouts/topCenter.js'></script>
         <script type='text/javascript' src='<?= base_url() ?>asset/js/plugins/noty/layouts/topLeft.js'></script>
-        <script type='text/javascript' src='<?= base_url() ?>asset/js/plugins/noty/layouts/topRight.js'></script>            
+        <script type='text/javascript' src='<?= base_url() ?>asset/js/plugins/noty/layouts/topRight.js'></script>
+        <script type="text/javascript" src="<?= base_url() ?>asset/js/plugins/summernote/summernote.js"></script>
         
         <script type='text/javascript' src='<?= base_url() ?>asset/js/plugins/noty/themes/default.js'></script>
         <?php if (!empty($this->session->flashdata('notif'))): ?>

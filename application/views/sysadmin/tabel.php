@@ -830,3 +830,55 @@
         </div>
     </div>
 <?php } ?>
+
+<?php if ($content == "data-berita") { ?>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?= $subtitle ?></h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand" data-toggle="tooltip" data-placement="top" title="Layar Penuh"></span></a></li>
+                        <li><a href="<?= site_url('sysadmin/berita/tambah') ?>" data-toggle="tooltip" title="Tambah Data Berita" class="panel-plus"><span class="fa fa-plus"></span></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table datatable table-bordered table-condensed table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Judul Berita</th>
+                                <th>Foto</th>
+                                <th>Isi Berita</th>
+                                <th>Tanggal</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1; foreach ($data as $key): ?>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $key->judul_berita ?></td>
+                                <td>
+                                    <img class="img img-responsive" src="<?= base_url() ?>/files/berita/<?= $key->foto_berita ?>">
+                                </td>
+                                <td><?= substr($key->isi_berita, 0, 300)."..." ?></td>
+                                <td><?= date_indo($key->dibuat) ?></td>
+                                <td>
+                                    <a href="<?= site_url('sysadmin/berita/edit/'.$key->id_berita) ?>" class="btn btn-xs btn-success" data-toggle="tooltip" title="Edit Berita">Edit</a>
+                                    <a data-toggle="tooltip" title="Hapus Berita" href="<?= site_url('sysadmin/berita/delete/'.$key->id_berita.'?foto_berita='.$key->foto_berita) ?>" onclick="return confirm('Apakah anda yakin akan menghapus Berita?\n<?= $key->judul_berita ?>')" class="btn btn-xs btn-danger">Hapus</a>
+                                    <?php if ($key->publish == 1){ ?>
+                                        <a href="<?= site_url('sysadmin/berita/unpublish/'.$key->id_berita) ?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Batal Terbitkan Berita">Unpublish</a>
+                                    <?php }else{ ?>
+                                        <a href="<?= site_url('sysadmin/berita/publish/'.$key->id_berita) ?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Terbitkan Berita">publish</a>
+                                    <?php } ?>
+                                </td>
+                            </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
