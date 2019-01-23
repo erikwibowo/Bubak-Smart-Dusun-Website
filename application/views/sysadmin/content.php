@@ -25,5 +25,9 @@
 		$this->load->view('sysadmin/tabel');
 	}elseif ($content == "data-rinci-penarikan-dana-warga"){
 		$this->load->view('sysadmin/tabel');
+	}elseif ($content == "data-telepon"){
+		$this->load->view('sysadmin/tabel');
+	}elseif ($content == "data-slider"){
+		$this->load->view('sysadmin/tabel');
 	}
 ?>

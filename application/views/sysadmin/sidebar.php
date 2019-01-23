@@ -44,6 +44,18 @@
                 <li class="<?= @$dberita ?>"><a href="<?= site_url('sysadmin/berita') ?>"><span class="fa fa-file"></span> Data Berita</a></li>
             </ul>
         </li>
+        <li class="xn-openable <?= @$slider ?>">
+            <a href="#"><span class="fa fa-image"></span> <span class="xn-text">SLIDER</span></a>
+            <ul>
+                <li class="<?= @$dslider ?>"><a href="<?= site_url('sysadmin/slider') ?>"><span class="fa fa-image"></span> Data Slider</a></li>
+            </ul>
+        </li>
+        <li class="xn-openable <?= @$telepon ?>">
+            <a href="#"><span class="fa fa-phone"></span> <span class="xn-text">TELEPON</span></a>
+            <ul>
+                <li class="<?= @$dtelepon ?>"><a href="<?= site_url('sysadmin/telepon') ?>"><span class="fa fa-phone-square"></span> Data Telepon</a></li>
+            </ul>
+        </li>
         <li class="xn-openable <?= @$penarikan_dana ?>">
             <a href="#"><span class="fa fa-money"></span> <span class="xn-text">PENARIKAN DANA</span></a>
             <ul>

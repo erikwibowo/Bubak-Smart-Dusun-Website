@@ -882,3 +882,233 @@
         </div>
     </div>
 <?php } ?>
+
+<?php if ($content == "data-telepon") { ?>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?= $subtitle ?></h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand" data-toggle="tooltip" data-placement="top" title="Layar Penuh"></span></a></li>
+                        <li><a href="#" class="panel-print"><span class="fa fa-print" data-toggle="tooltip" data-placement="top" title="Cetak"></span></a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#tambahadmin" class="panel-plus"><span class="fa fa-plus"></span></a></li>
+                        <!-- Modal tambah Telepon -->
+                        <div class="modal" id="tambahadmin" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title" id="defModalHead">Tambah Telepon</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" method="POST" action="<?= site_url('sysadmin/telepon/insert') ?>">
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Nama Telepon</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" name="nama_telepon" required placeholder="masukkan nama lengkap" class="form-control" value=""/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Nomor Telepon</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" name="nomor_telepon" required placeholder="masukkan nomor telepon" class="form-control" value=""/>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-success" value="Simpan">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of modal tambah Telepon -->
+                    </ul>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table datatable table-bordered table-condensed table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Telepon</th>
+                                <th>Nomor Telepon</th>
+                                <th>Dibuat</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1; foreach ($data as $key): ?>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $key->nama_telepon ?></td>
+                                <td><?= $key->nomor_telepon ?></td>
+                                <td><?= $key->dibuat ?></td>
+                                <td>
+                                    <a href="#" class="btn btn-xs btn-success" data-toggle="modal" data-target="#edittelepon<?= $key->id_telepon ?>">Edit</a>
+                                    <a href="<?= site_url('sysadmin/telepon/delete/'.$key->id_telepon) ?>" onclick="return confirm('Apakah anda yakin akan menghapus Telepon?\n<?= $key->nama_telepon ?>')" class="btn btn-xs btn-danger">Hapus</a>
+                                </td>
+                            </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php foreach ($data as $key){ ?>
+    <!-- Modal tambah Telepon -->
+    <div class="modal" id="edittelepon<?= $key->id_telepon ?>" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="defModalHead">Tambah Admin</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" method="POST" action="<?= site_url('sysadmin/telepon/update') ?>">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Nama Telepon</label>
+                            <div class="col-md-9">
+                                <input type="text" name="nama_telepon" required placeholder="masukkan nama telepon" class="form-control" value="<?= $key->nama_telepon ?>"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Nomor Telepon</label>
+                            <div class="col-md-9">
+                                <input type="text" name="nomor_telepon" required placeholder="masukkan nomor telepon" class="form-control" value="<?= $key->nomor_telepon ?>"/>
+                                <input type="hidden" name="id_telepon" value="<?= $key->id_telepon ?>">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="Simpan">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    <!-- End of modal tambah Telepon -->
+<?php } } ?>
+
+<?php if ($content == "data-slider") { ?>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?= $subtitle ?></h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand" data-toggle="tooltip" data-placement="top" title="Layar Penuh"></span></a></li>
+                        <li><a href="#" class="panel-print"><span class="fa fa-print" data-toggle="tooltip" data-placement="top" title="Cetak"></span></a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#tambahadmin" class="panel-plus"><span class="fa fa-plus"></span></a></li>
+                        <!-- Modal tambah Telepon -->
+                        <div class="modal" id="tambahadmin" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title" id="defModalHead">Tambah Slider</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal"  enctype="multipart/form-data" method="POST" action="<?= site_url('sysadmin/Slider/insert') ?>">
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Foto SLider</label>
+                                                <div class="col-md-9">
+                                                    <input type="file" name="foto_slider" required class="form-control"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Caption</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" name="caption" maxlength="200" required placeholder="masukkan caption" class="form-control" value=""/>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-success" value="Simpan">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of modal tambah Telepon -->
+                    </ul>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table datatable table-bordered table-condensed table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Foto Slider</th>
+                                <th>Caption</th>
+                                <th>Dibuat</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1; foreach ($data as $key): ?>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td>
+                                    <img width="20%" height="20%" class="img img-responsive" src="<?= base_url() ?>files/slider/<?= $key->foto_slider ?>">
+                                </td>
+                                <td><?= $key->caption ?></td>
+                                <td><?= $key->dibuat ?></td>
+                                <td><?= $key->aktif == 1 ? "Aktif":"Nonaktif" ?></td>
+                                <td>
+                                    <a href="#" class="btn btn-xs btn-success" data-toggle="modal" data-target="#editslider<?= $key->id_slider ?>">Edit</a>
+                                    <a href="<?= site_url('sysadmin/slider/delete/'.$key->id_slider.'?foto_slider='.$key->foto_slider) ?>" onclick="return confirm('Apakah anda yakin akan menghapus Slider?\n<?= $key->caption ?>')" class="btn btn-xs btn-danger">Hapus</a>
+                                    <?php if ($key->aktif == 1) { ?>
+                                        <a href="<?= site_url('sysadmin/slider/nonaktif/'.$key->id_slider) ?>" class="btn btn-xs btn-warning">NonAktifkan</a>
+                                    <?php }else{ ?>
+                                        <a href="<?= site_url('sysadmin/slider/aktif/'.$key->id_slider) ?>" class="btn btn-xs btn-warning">Aktifkan</a>
+                                    <?php } ?>
+                                </td>
+                            </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php foreach ($data as $key){ ?>
+    <!-- Modal tambah Telepon -->
+    <div class="modal" id="editslider<?= $key->id_slider ?>" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="defModalHead">Tambah Admin</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal"  enctype="multipart/form-data" method="POST" action="<?= site_url('sysadmin/Slider/update') ?>">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Foto SLider</label>
+                            <div class="col-md-9">
+                                <input type="file" name="foto_slider" class="form-control"/>
+                                <input type="hidden" name="foto_slider_lama" value="<?= $key->foto_slider ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Caption</label>
+                            <div class="col-md-9">
+                                <input type="text" name="caption" maxlength="200" value="<?= $key->caption ?>" required placeholder="masukkan caption" class="form-control"/>
+                                <input type="hidden" name="id_slider" value="<?= $key->id_slider ?>">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="Simpan">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    <!-- End of modal tambah Telepon -->
+<?php } } ?>

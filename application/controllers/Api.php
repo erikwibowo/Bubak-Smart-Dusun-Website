@@ -100,6 +100,35 @@ class Api extends CI_Controller {
 		echo json_encode($arr);
 	}
 
+
+	public function slider(){
+		$data = $this->Mapi->slider()->result();
+		$arr = array();
+		$arra = array();
+
+		foreach ($data as $key) {
+			$arra['foto_slider']	= $key->foto_slider;
+			$arra['caption']		= $key->caption;
+			array_push($arr, $arra);
+		}
+
+		echo json_encode($arr);
+	}
+
+	public function telepon(){
+		$data = $this->Mapi->telepon()->result();
+		$arr = array();
+		$arra = array();
+
+		foreach ($data as $key) {
+			$arra['nama_telepon']	= $key->nama_telepon;
+			$arra['nomor_telepon']		= $key->nomor_telepon;
+			array_push($arr, $arra);
+		}
+
+		echo json_encode($arr);
+	}
+
 }
 
 /* End of file Api.php */

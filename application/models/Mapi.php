@@ -38,6 +38,16 @@ class Mapi extends CI_Model {
 		return $this->db->get('tb_berita a');
 	}
 
+	public function slider(){
+		$this->db->where('aktif', 1);
+		$this->db->order_by('id_slider', 'desc');
+		return $this->db->get('tb_slider');
+	}
+
+	public function telepon(){
+		return $this->db->get('tb_telepon');
+	}
+
 }
 
 /* End of file Mapi.php */
